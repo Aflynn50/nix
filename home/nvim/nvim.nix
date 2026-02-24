@@ -21,6 +21,7 @@
     nvim-treesitter.withAllGrammars
     nvim-lspconfig
     rust-vim
+    nvim-jdtls
 
     # My custom NeoSolarized 
     (pkgs.vimUtils.buildVimPlugin {

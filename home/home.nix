@@ -32,6 +32,10 @@
 
   # nvim config
   programs.neovim = import ./nvim/nvim.nix {inherit pkgs;};
+  home.file.".config/nvim/lua" = {
+    source = ./nvim/lua;
+    recursive = true;
+  };
 
   # starship
   programs.starship = {
