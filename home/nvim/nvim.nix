@@ -35,6 +35,6 @@
     })
   ];
 
-  extraConfig = builtins.readFile ./init.vim;
+  # extraConfig = builtins.readFile ./init.vim; -- This has been migrated into the lua dir
   extraLuaConfig = builtins.readFile ./init.lua;
 }

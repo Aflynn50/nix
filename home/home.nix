@@ -20,6 +20,7 @@
     coreutils # gnu coreutils
     ripgrep
     jq
+    yq
     tree
     sl
     gnused # sed

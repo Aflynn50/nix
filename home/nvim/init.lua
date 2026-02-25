@@ -1,12 +1,38 @@
-local telescope = require('telescope')
-telescope.setup {
-    pickers = {
-        find_files = {
-            hidden = true
-        }
-    }
-}
-telescope.load_extension('fzf')
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.cindent = true
+vim.opt.smartindent = true
+vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.scrolloff = 7
+vim.opt.mouse = "a"
+vim.opt.path:append("*/**")
+vim.opt.updatetime = 100
+vim.opt.autowrite = true
+vim.opt.foldenable = false
+vim.opt.termguicolors = true
+vim.opt.background = "light"
+
+vim.g.mapleader = " "
+
+vim.cmd("syntax on")
+vim.cmd("colorscheme NeoSolarized")
+
+-- Window navigation
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+
+-- Ctrl-backspace to delete previous word
+vim.keymap.set("!", "<C-BS>", "<C-w>")
+vim.keymap.set("!", "<C-h>", "<C-w>")
+
+-- Plugins
+vim.g.vim_markdown_folding_disabled = 1
+vim.g.airline_theme = "solarized"
 
 -- Settings for nixd nix language server. The language server itself is
 -- installed through home manager as a package.
@@ -56,16 +82,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-require('nvim-treesitter.configs').setup {
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-}
-
--- Load AWS Java config
-require('java')
-
 -- Lua config - taken from https://neovim.io/doc/user/lsp/
 vim.lsp.config['lua_ls'] = {
     -- Command and arguments to start the server.
@@ -94,3 +110,8 @@ vim.lsp.config['lua_ls'] = {
     }
 }
 vim.lsp.enable('lua_ls')
+
+-- Load plugin config
+require('telescope')
+require('treesitter')
+require('java')

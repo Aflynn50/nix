@@ -19,3 +19,9 @@ format = '[$symbol$branch(:$remote_branch)]($style) '
 
 [gradle]
 disabled = true
+
+[shell]
+disabled = false
+
+[package]
+disabled = true
