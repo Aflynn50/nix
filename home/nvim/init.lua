@@ -112,6 +112,6 @@ vim.lsp.config['lua_ls'] = {
 vim.lsp.enable('lua_ls')
 
 -- Load plugin config
-require('telescope')
-require('treesitter')
+require('telescope_config')
+require('treesitter_config')
 require('java')
