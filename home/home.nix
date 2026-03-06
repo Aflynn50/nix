@@ -24,11 +24,12 @@
     tree
     sl
     gnused # sed
+    uv # python package manager
 
     # lsp/file formatters
     alejandra # .nix file formatter
     nixd # nix lsp
-    lua-language-server  
+    lua-language-server
   ];
 
   # nvim config
@@ -79,8 +80,8 @@
     recursive = true;
   };
 
-  # ghostty currently doesn't build from source on MacOS so this just manages the config.
-  programs.ghostty = import ./ghostty/ghostty.nix {inherit pkgs;};
+  # ghostty
+  programs.ghostty = import ./ghostty/ghostty.nix {inherit pkgs lib;};
 
   # ZSH config
   home.file.".oh-my-zsh" = {

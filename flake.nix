@@ -1,5 +1,5 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "Cross-platform nix config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
@@ -19,34 +19,66 @@
     nixpkgs,
     home-manager,
   }: let
-    # Use a function to set the home manager config per user depending on the
-    # username. This can eventually be refactored into a seperate home.nix per user
-    # that mostly imports a common one.
-    mkHome = username: {
-      home-manager.users.${username} = import ./home/home.nix;
-
-      # Automatically append old files to be replaced with .before-home-manager
-      home-manager.backupFileExtension = "before-home-manager";
-    };
-
-    mkDarwinSystem = username: hostModule:
+    mkDarwinSystem = {
+      username,
+      hostDarwinModule,
+      hostHomeModule,
+    }:
       nix-darwin.lib.darwinSystem {
         modules = [
-          ./configuration.nix
-          hostModule
+          ./darwin/configuration.nix
+          hostDarwinModule
           home-manager.darwinModules.home-manager
-          (mkHome username)
           {
+            # Automatically append old files to be replaced with .before-home-manager
+            home-manager.backupFileExtension = "before-home-manager";
+            home-manager.users.${username} = {...}: {
+              imports = [./home/home.nix hostHomeModule];
+            };
             # Set Git commit hash for darwin-version. The self property is only
             # available here, so just plonk this here for now.
             system.configurationRevision = self.rev or self.dirtyRev or null;
           }
         ];
       };
+
+    mkHomeConfiguration = {
+      system,
+      username,
+      hostHomeModule,
+    }:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [
+          ./home/home.nix
+          hostHomeModule
+          {
+            home.username = username;
+            home.homeDirectory = "/home/${username}";
+          }
+        ];
+      };
   in {
     darwinConfigurations = {
-      "842f57432ec3" = mkDarwinSystem "alasflyn" ./modules/hosts/aws.nix; # AWS
-      "GC9VDX0C4R" = mkDarwinSystem "alasflyn" ./modules/hosts/s1.nix; # S1
+      "842f57432ec3" = mkDarwinSystem {
+        username = "alasflyn";
+        hostDarwinModule = ./darwin/hosts/aws.nix;
+        hostHomeModule = ./home/hosts/aws.nix;
+      }; # AWS
+      "GC9VDX0C4R" = mkDarwinSystem {
+        username = "alasflyn";
+        hostDarwinModule = ./darwin/hosts/s1.nix;
+        hostHomeModule = ./home/hosts/s1.nix;
+      }; # S1
+    };
+
+    homeConfigurations = {
+      # Standalone home-manager for Linux. Run: home-manager switch --flake .
+      "alasflyn" = mkHomeConfiguration {
+        system = "x86_64-linux";
+        username = "alasflyn";
+        hostHomeModule = {};
+      };
     };
   };
 }
