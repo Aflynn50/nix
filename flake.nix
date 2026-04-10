@@ -66,7 +66,7 @@
         hostHomeModule = ./home/hosts/aws.nix;
       }; # AWS
       "GC9VDX0C4R" = mkDarwinSystem {
-        username = "alasflyn";
+        username = "alastai.flynn";
         hostDarwinModule = ./darwin/hosts/s1.nix;
         hostHomeModule = ./home/hosts/s1.nix;
       }; # S1

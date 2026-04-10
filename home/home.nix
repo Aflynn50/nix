@@ -29,8 +29,6 @@
     gnused # sed
     uv # python package manager
 
-    claude-code
-
     # lsp/file formatters
     alejandra # .nix file formatter
     nixd # nix lsp
