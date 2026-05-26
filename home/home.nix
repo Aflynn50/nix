@@ -29,6 +29,7 @@
     gnused # sed
     uv # python package manager
     fastfetch
+    duf # fancy df equivilent
 
     # lsp/file formatters
     alejandra # .nix file formatter
