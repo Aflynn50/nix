@@ -4,6 +4,8 @@ nnoremap <C-m> :action GotoPreviousError<CR>
 set easymotion
 let mapleader=" "
 
+set commentary
+
 " Disable default key mapping
 let g:EasyMotion_do_mapping=0
 " Customize the desired key mapping

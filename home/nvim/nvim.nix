@@ -26,6 +26,7 @@
     leap-nvim
     plenary-nvim # Dependency of typescript-tools-nvim
     typescript-tools-nvim
+    vim-commentary
 
     # My custom NeoSolarized 
     (pkgs.vimUtils.buildVimPlugin {

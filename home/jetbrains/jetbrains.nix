@@ -11,10 +11,9 @@
     else "${config.home.homeDirectory}/.config/JetBrains";
 
   jetbrainsDirs =
-    builtins.trace "it is ${lib.boolToString (builtins.pathExists jetbrainsBase)} and path is ${jetbrainsBase}"
-    (if builtins.pathExists jetbrainsBase
+    if builtins.pathExists jetbrainsBase
     then builtins.attrNames (builtins.readDir jetbrainsBase)
-    else []);
+    else builtins.trace "Cannot find directory ${jetbrainsBase}: is --impure active?" [];
 
   prefixes = ["IntelliJIdea" "PyCharm"];
 
