@@ -1,3 +1,7 @@
+#
+# WARNING this is legacy - this is now configured directly in nix (ghpstty.nix)
+#
+#
 theme = Violet Light
 
 # Don't hang around

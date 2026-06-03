@@ -15,7 +15,7 @@
       "ctrl+alt+down=goto_split:down"
       "ctrl+alt+up=goto_split:up"
     ];
-    shell-integration-features = "ssh-terminfo";
+    shell-integration-features = "ssh-terminfo,ssh-env,sudo";
   };
   enableFishIntegration = true;
 }

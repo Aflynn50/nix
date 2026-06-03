@@ -30,6 +30,7 @@
     uv # python package manager
     fastfetch
     duf # fancy df equivilent
+    csvlens # CLI csv viewer
 
     # lsp/file formatters
     alejandra # .nix file formatter
