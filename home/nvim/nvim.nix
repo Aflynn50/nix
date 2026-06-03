@@ -40,6 +40,11 @@
     })
   ];
 
+  # The defaults for these changed with upgrade to 26.05, I've set them
+  # explicitly to remove warnings.
+  withRuby = false;
+  withPython3 = true;
+
   # extraConfig = builtins.readFile ./init.vim; -- This has been migrated into the lua dir
-  extraLuaConfig = builtins.readFile ./init.lua;
+  initLua = builtins.readFile ./init.lua;
 }
