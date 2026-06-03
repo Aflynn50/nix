@@ -124,6 +124,14 @@
     source = ./dotfiles/.ideavimrc;
   };
 
+  # tmux config
+  programs.tmux = {
+    enable = true;
+    mouse = true;
+    sensibleOnTop = true;
+    shortcut = "a"; # Set the tmux prefix key to C-a
+  };
+
   # Enviromental variables
   home.sessionVariables = {
     EDITOR = "nvim";
