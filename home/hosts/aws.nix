@@ -24,6 +24,8 @@
     alias bball='brc --allPackages'
     alias bbb='brc --allPackages brazil-build'
     alias bbra='bbr apollo-pkg'
+
+    . /Users/alasflyn/workplace/Uluru/CloudsoftUluruHelpers/src/CloudsoftUluruHelpers/build/bin/install-uluru-scripts.sh --quiet --profile uluru
   '';
   programs.fish.interactiveShellInit = ''
     fish_add_path ~/.toolbox/bin/
