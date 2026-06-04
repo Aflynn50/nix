@@ -131,6 +131,12 @@
     mouse = true;
     sensibleOnTop = true;
     shortcut = "a"; # Set the tmux prefix key to C-a
+    extraConfig = ''
+bind s split-window -h -c '#{pane_current_path}'
+bind v split-window -v -c '#{pane_current_path}'
+unbind '"'
+unbind %
+'';
   };
 
   # Enviromental variables
