@@ -170,6 +170,10 @@ end)
 -- Python pyright lsp
 vim.lsp.enable('pyright')
 
+-- Typescript lsp
+require("typescript-tools").setup {}
+vim.lsp.enable("typescript-tools")
+
 
 -- Load plugin config
 require('telescope_config')

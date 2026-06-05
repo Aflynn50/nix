@@ -136,6 +136,10 @@ bind v split-window -h -c '#{pane_current_path}'
 bind s split-window -v -c '#{pane_current_path}'
 unbind '"'
 unbind %
+
+set -g status-bg "#eee8d5"
+set -g status-fg "#93a1a1"
+set -g status-position top
 '';
   };
 
