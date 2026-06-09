@@ -3,9 +3,6 @@
   # manager nix files.
   programs.zsh.initContent = ''
     export PATH=$HOME/.toolbox/bin:$HOME/.guard/bin:$PATH
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    # Set up mise for runtime management
-    eval "$(mise activate zsh)"
     source $HOME/workplace/Uluru/CloudsoftUluruHelpers/src/CloudsoftUluruHelpers/build/bin/install-uluru-scripts.sh --quiet --profile uluru
     export DOCKER_HOST=unix:///Applications/Finch/lima/data/finch/sock/finch.sock
     export DOCKER_CONFIG=/Users/adaridde/ finch

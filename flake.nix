@@ -82,7 +82,7 @@
       "alasflyn" = mkHomeConfiguration {
         system = "x86_64-linux";
         username = "alasflyn";
-        hostHomeModule = {};
+        hostHomeModule = ./home/hosts/awscd.nix;
       }; # Cloud Desktop
     };
   };
