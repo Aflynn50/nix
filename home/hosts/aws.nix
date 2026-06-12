@@ -1,4 +1,9 @@
-{...}: {
+{pkgs, ...}: {
+  # Host-specific packages for this laptop.
+  home.packages = with pkgs; [
+    nodejs # provides npm
+  ];
+
   # This will append onto the zsh and fish config created in the common home
   # manager nix files.
   programs.zsh.initContent = ''
