@@ -25,3 +25,6 @@ disabled = false
 
 [package]
 disabled = true
+
+[golang]
+disabled = true
