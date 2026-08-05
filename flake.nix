@@ -74,11 +74,16 @@
 
     homeConfigurations = {
       # Standalone home-manager for Linux. Run: home-manager switch --flake .
-      "aflynn" = mkHomeConfiguration {
+      "aflynn@aflynn-T14" = mkHomeConfiguration {
         system = "x86_64-linux";
         username = "aflynn";
         hostHomeModule = {};
-      }; # Personal laptop
+      }; # Personal laptop 
+      "aflynn@pi46" = mkHomeConfiguration {
+        system = "aarch64-linux";
+        username = "aflynn";
+        hostHomeModule = {};
+      }; # Rpis
       "alasflyn" = mkHomeConfiguration {
         system = "x86_64-linux";
         username = "alasflyn";
