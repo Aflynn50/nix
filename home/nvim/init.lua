@@ -61,6 +61,58 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<C-m>', vim.diagnostic.goto_prev)
 
+-- Diagnostic display: a short message at the end of the line (virtual_text)
+-- plus the full message rendered beneath the code (virtual_lines).
+vim.diagnostic.config({
+    virtual_text = true,
+    virtual_lines = false,
+    signs = true,
+    underline = true,
+})
+
+-- Show the diagnostic float automatically once the cursor rests, using the
+-- updatetime set at the top of this file. focus = false stops the float from
+-- stealing the cursor when it reopens.
+vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+        vim.diagnostic.open_float(nil, {
+            focus = false,
+            scope = "cursor",
+            close_events = { "CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave" },
+        })
+    end,
+})
+
+-- Smart Ctrl-]: jump to the definition, unless the cursor is already on the
+-- definition, in which case show the usages in telescope (matches IntelliJ's
+-- Ctrl+B behaviour).
+local function goto_definition_or_usages()
+    -- Ask the server where the definition is. Params are built per-client so
+    -- the correct position encoding (utf-8/16/32) is used.
+    vim.lsp.buf_request(0, 'textDocument/definition', function(client, _)
+        return vim.lsp.util.make_position_params(0, client.offset_encoding)
+    end, function(_, result)
+        if result == nil or vim.tbl_isempty(result) then
+            vim.notify('No definition found', vim.log.levels.INFO)
+            return
+        end
+        -- Result is a Location, Location[] or LocationLink[].
+        local target = vim.islist(result) and result[1] or result
+        local uri = target.uri or target.targetUri
+        local range = target.range or target.targetSelectionRange
+        local row = vim.api.nvim_win_get_cursor(0)[1] - 1 -- LSP lines are 0-based
+        local at_definition = uri == vim.uri_from_bufnr(0)
+            and row >= range.start.line
+            and row <= range['end'].line
+        if at_definition then
+            require('telescope.builtin').lsp_references({ include_declaration = false })
+        else
+            vim.lsp.buf.definition()
+        end
+    end)
+end
+vim.keymap.set('n', '<C-]>', goto_definition_or_usages, { desc = 'Goto definition / show usages' })
+
 -- Plugins
 vim.g.vim_markdown_folding_disabled = 1
 vim.g.airline_theme = "solarized"
