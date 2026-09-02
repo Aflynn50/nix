@@ -4,6 +4,12 @@
   lib,
   ...
 }: {
+  # Note: darwin-only config lives in ./darwin.nix, which flake.nix imports
+  # from mkDarwinSystem (that call site is already Mac-only).
+  imports = [
+    ./jetbrains/jetbrains.nix # Jetbrains keymap config
+  ];
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -119,8 +125,6 @@
     initContent = '''';
   };
 
-  # Jetbrains keymap config
-  imports = [./jetbrains/jetbrains.nix];
   # Jetbrains ideavimrc
   home.file.".ideavimrc" = {
     source = ./dotfiles/.ideavimrc;

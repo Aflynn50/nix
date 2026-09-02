@@ -33,7 +33,7 @@
             # Automatically append old files to be replaced with .before-home-manager
             home-manager.backupFileExtension = "before-home-manager";
             home-manager.users.${username} = {...}: {
-              imports = [./home/home.nix hostHomeModule];
+              imports = [./home/home.nix ./home/darwin.nix hostHomeModule];
             };
             # Set Git commit hash for darwin-version. The self property is only
             # available here, so just plonk this here for now.
@@ -70,6 +70,12 @@
         hostDarwinModule = ./darwin/hosts/s1.nix;
         hostHomeModule = ./home/hosts/s1.nix;
       }; # S1
+      "Alastairs-MacBook-Pro" = mkDarwinSystem {
+        username = "aflynn";
+        hostDarwinModule = ./darwin/hosts/cloudsoft.nix;
+        hostHomeModule = ./home/hosts/cloudsoft.nix;
+      }; # Cloudsoft Laptop
+      # When adding new options here, make sure to also create a new darwin/hosts file
     };
 
     homeConfigurations = {
@@ -78,7 +84,7 @@
         system = "x86_64-linux";
         username = "aflynn";
         hostHomeModule = {};
-      }; # Personal laptop 
+      }; # Personal laptop
       "aflynn@pi46" = mkHomeConfiguration {
         system = "aarch64-linux";
         username = "aflynn";
