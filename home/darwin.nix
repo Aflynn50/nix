@@ -34,6 +34,15 @@
     alternateDefaultShortcuts = true;
     subsequentExecutionMode = 1;
 
+    # NOTE: not managed by nix -- turn these off by hand on a new machine.
+    # macOS's Mission Control "Move left a space" / "Move right a space"
+    # (Ctrl+Left / Ctrl+Right) shadow word-skip in text fields. Disable them
+    # under System Settings > Keyboard > Keyboard Shortcuts > Mission Control.
+    # They are ids 79 and 81 in the com.apple.symbolichotkeys domain, which is
+    # deliberately left alone: targets.darwin.defaults would need every one of
+    # the ~21 system hotkeys declared, since `defaults import` replaces the
+    # whole domain.
+
     # Option + arrows, replacing the old Fn + arrows. Fn is consumed by the
     # keyboard itself, which is why the old export showed bare
     # Home/End/PgUp/PgDn with modifierFlags = 0.
