@@ -21,6 +21,11 @@
   # Let Determinate Nix handle Nix configuration
   nix.enable = false;
 
+  # Automatically show and hide the dock. Options under system.defaults apply to
+  # system.primaryUser, which is set per host in darwin/hosts. The Dock is
+  # restarted on activation, so no manual killall is needed.
+  system.defaults.dock.autohide = true;
+
   # Enable touch ID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 
