@@ -24,8 +24,8 @@
   targets.darwin.defaults."com.knollsoft.Rectangle" = {
     launchOnLogin = true;
 
-    # Option+arrow collides with macOS's word-wise text navigation, which
-    # Rectangle would otherwise refuse to bind over.
+    # Needed for the unmodified Home/End/PgUp/PgDn bindings below: Rectangle
+    # refuses to register a shortcut with no modifier unless this is set.
     allowAnyShortcut = true;
 
     # Carried over from the pre-existing config: most of the other bindings
@@ -43,42 +43,44 @@
     # the ~21 system hotkeys declared, since `defaults import` replaces the
     # whole domain.
 
-    # Option + arrows, replacing the old Fn + arrows. Fn is consumed by the
-    # keyboard itself, which is why the old export showed bare
-    # Home/End/PgUp/PgDn with modifierFlags = 0.
+    # Fn + arrows. Fn is not a modifier here: the keyboard rewrites the
+    # keycode itself, so Fn+Left arrives as Home, Fn+Right as End, Fn+Up as
+    # PgUp and Fn+Down as PgDn, with no Fn bit set in modifierFlags. Rectangle
+    # therefore sees bare Home/End/PgUp/PgDn, and the Shift variants carry
+    # Shift alone.
     #
-    # keyCodes are macOS virtual key codes; modifierFlags are raw NSEvent flag
-    # sums -- option = 524288, shift+option = 131072 + 524288 = 655360. (The
-    # friendly names like "option" only exist inside programs.rectangle's
-    # submodule, not here.)
+    # keyCodes are macOS virtual key codes -- 115 = Home, 119 = End,
+    # 116 = PgUp, 121 = PgDn. modifierFlags are raw NSEvent flag sums, so
+    # shift = 131072. (The friendly names like "option" only exist inside
+    # programs.rectangle's submodule, not here.)
     leftHalf = {
-      keyCode = 123; # Option + Left
-      modifierFlags = 524288;
+      keyCode = 115; # Fn + Left (Home)
+      modifierFlags = 0;
     };
     rightHalf = {
-      keyCode = 124; # Option + Right
-      modifierFlags = 524288;
+      keyCode = 119; # Fn + Right (End)
+      modifierFlags = 0;
     };
     topHalf = {
-      keyCode = 126; # Option + Up
-      modifierFlags = 524288;
+      keyCode = 116; # Fn + Up (PgUp)
+      modifierFlags = 0;
     };
     bottomHalf = {
-      keyCode = 125; # Option + Down
-      modifierFlags = 524288;
+      keyCode = 121; # Fn + Down (PgDn)
+      modifierFlags = 0;
     };
 
     maximize = {
-      keyCode = 126; # Shift + Option + Up
-      modifierFlags = 655360;
+      keyCode = 116; # Shift + Fn + Up (PgUp)
+      modifierFlags = 131072;
     };
     nextDisplay = {
-      keyCode = 123; # Shift + Option + Left
-      modifierFlags = 655360;
+      keyCode = 115; # Shift + Fn + Left (Home)
+      modifierFlags = 131072;
     };
     previousDisplay = {
-      keyCode = 124; # Shift + Option + Right
-      modifierFlags = 655360;
+      keyCode = 119; # Shift + Fn + Right (End)
+      modifierFlags = 131072;
     };
   };
 
