@@ -64,6 +64,11 @@
     source = ./dotfiles/.config/starship.toml;
   };
 
+  # claude.md
+  home.file.".claude/CLAUDE.md" = {
+    source = ./dotfiles/.claude/CLAUDE.md;
+  };
+
   # fish shell.
   programs.fish = {
     enable = true;
