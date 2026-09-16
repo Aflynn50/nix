@@ -3,7 +3,7 @@
   # nix files.
   programs.fish.interactiveShellInit = ''
     if status is-interactive
-        set -Ux AWS_PROFILE "S1A6Dev"
+        set -gx AWS_PROFILE "S1A6Dev"
     end
   '';
 }
