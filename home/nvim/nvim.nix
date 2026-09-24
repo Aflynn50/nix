@@ -27,6 +27,7 @@
     plenary-nvim # Dependency of typescript-tools-nvim
     typescript-tools-nvim
     vim-commentary
+    render-markdown-nvim
 
     # My custom NeoSolarized 
     (pkgs.vimUtils.buildVimPlugin {
