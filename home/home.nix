@@ -38,6 +38,7 @@
     duf # fancy df equivilent
     csvlens # CLI csv viewer
     sd # trendy new sed replacement!
+    gh # GitHub CLI (claude likes to use this)
 
     # lsp/file formatters
     alejandra # .nix file formatter
