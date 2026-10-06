@@ -76,6 +76,7 @@
         hostHomeModule = ./home/hosts/cloudsoft.nix;
       }; # Cloudsoft Laptop
       # When adding new options here, make sure to also create a new darwin/hosts file
+      # Find the hostname with the hostname command
     };
 
     homeConfigurations = {
