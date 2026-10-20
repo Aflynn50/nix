@@ -1,4 +1,6 @@
 {...}: {
+  programs.git.settings.user.email = "alasflyn@amazon.com";
+
   # This will append onto the zsh and fish config created in the common home
   # manager nix files.
   programs.zsh.initContent = ''

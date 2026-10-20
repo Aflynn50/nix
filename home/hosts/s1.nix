@@ -1,4 +1,6 @@
 {...}: {
+  programs.git.settings.user.email = "alastai.flynn@sentinelone.com";
+
   # This will append onto the fish config created in the common home manager
   # nix files.
   programs.fish.interactiveShellInit = ''

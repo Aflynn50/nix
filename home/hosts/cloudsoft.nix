@@ -13,6 +13,5 @@
     (lib.hiPrio corepack)
   ];
 
-  # Use the work email for git on this laptop, overriding the common one.
-  programs.git.settings.user.email = lib.mkForce "alastairflynn@cloudsoftcorp.com";
+  programs.git.settings.user.email = "alastairflynn@cloudsoftcorp.com";
 }

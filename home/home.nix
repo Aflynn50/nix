@@ -163,11 +163,10 @@ set -g terminal-overrides 'xterm*:smcup@:rmcup@'        # use the terminal's nat
     EDITOR = "nvim";
   };
 
-  # Git
+  # Git. The email is set per host in home/hosts.
   programs.git = {
     enable = true;
     settings.user.name = "Aflynn50";
-    settings.user.email = "af@aflynn.uk";
   };
 
   # Let Home Manager install and manage itself.

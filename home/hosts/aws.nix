@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  programs.git.settings.user.email = "alasflyn@amazon.com";
+
   # Host-specific packages for this laptop.
   home.packages = with pkgs; [
     nodejs # provides npm

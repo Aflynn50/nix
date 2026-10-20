@@ -84,12 +84,12 @@
       "aflynn@aflynn-T14" = mkHomeConfiguration {
         system = "x86_64-linux";
         username = "aflynn";
-        hostHomeModule = {};
+        hostHomeModule = ./home/hosts/personal.nix;
       }; # Personal laptop
       "aflynn@pi46" = mkHomeConfiguration {
         system = "aarch64-linux";
         username = "aflynn";
-        hostHomeModule = {};
+        hostHomeModule = ./home/hosts/personal.nix;
       }; # Rpis
       "alasflyn" = mkHomeConfiguration {
         system = "x86_64-linux";
