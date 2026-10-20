@@ -12,4 +12,7 @@
     # bin/corepack, so give this one priority to resolve the buildEnv clash.
     (lib.hiPrio corepack)
   ];
+
+  # Use the work email for git on this laptop, overriding the common one.
+  programs.git.settings.user.email = lib.mkForce "alastairflynn@cloudsoftcorp.com";
 }
