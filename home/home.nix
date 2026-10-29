@@ -158,9 +158,18 @@ set -g terminal-overrides 'xterm*:smcup@:rmcup@'        # use the terminal's nat
 '';
   };
 
+  # Bun preload that disables Claude Code's agent_summary side-query (wastes tokens).
+  # https://gist.github.com/flamerix-ai/c3905705cc4205e5de3011fa2e74efce
+  # Pinned by hash: if upstream changes, the build fails until the script is re-reviewed.
+  home.file.".local/share/no-agent-summary.js".source = pkgs.fetchurl {
+    url = "https://gist.githubusercontent.com/flamerix-ai/c3905705cc4205e5de3011fa2e74efce/raw/no-agent-summary.js";
+    hash = "sha256-3GaZ2gaWRjZUkiYdit4YnNGa81Lr/cWSbmquCi6NWfc=";
+  };
+
   # Enviromental variables
   home.sessionVariables = {
     EDITOR = "nvim";
+    BUN_OPTIONS = "--preload ${config.home.homeDirectory}/.local/share/no-agent-summary.js";
   };
 
   # Git. The email is set per host in home/hosts.
