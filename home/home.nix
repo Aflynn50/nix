@@ -39,6 +39,7 @@
     csvlens # CLI csv viewer
     sd # trendy new sed replacement!
     gh # GitHub CLI (claude likes to use this)
+    pi-coding-agent # pi coding agent CLI
 
     # lsp/file formatters
     alejandra # .nix file formatter
