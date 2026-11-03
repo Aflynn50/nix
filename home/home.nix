@@ -142,6 +142,7 @@
     enable = true;
     mouse = true;
     sensibleOnTop = true;
+    shell = "${pkgs.fish}/bin/fish"; # Spawn fish rather than the login shell
     shortcut = "a"; # Set the tmux prefix key to C-a
     extraConfig = ''
 bind v split-window -h -c '#{pane_current_path}'
