@@ -154,10 +154,13 @@ set -g status-bg "#eee8d5"
 set -g status-fg "#93a1a1"
 set -g status-position top
 
-set -g extended-keys on
 set -g history-limit 50000                              # large scrollback buffer
 set -g mouse on                                         # mouse wheel scrolls into copy-mode
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'        # use the terminal's native scrollback (wheel scrolls real history)
+
+# Wanted by pi
+set -g extended-keys on
+set -g extended-keys-format csi-u 
 '';
   };
 
