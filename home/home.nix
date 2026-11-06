@@ -8,6 +8,7 @@
   # from mkDarwinSystem (that call site is already Mac-only).
   imports = [
     ./jetbrains/jetbrains.nix # Jetbrains keymap config
+    ./pi/pi.nix # pi coding agent settings + vendored extensions
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -39,7 +40,6 @@
     csvlens # CLI csv viewer
     sd # trendy new sed replacement!
     gh # GitHub CLI (claude likes to use this)
-    pi-coding-agent # pi coding agent CLI
 
     # lsp/file formatters
     alejandra # .nix file formatter

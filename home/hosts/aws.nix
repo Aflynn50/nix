@@ -1,6 +1,13 @@
 {pkgs, ...}: {
   programs.git.settings.user.email = "alasflyn@amazon.com";
 
+  # pi: Amazon provider (merged into the common settings in home/pi/pi.nix).
+  programs.pi-coding-agent.settings = {
+    defaultProvider = "pi-amazon-claude-provider";
+    defaultModel = "anthropic.claude-opus-5-5";
+    packages = ["ssh://git.amazon.com/pkg/PIAmazonProvider"];
+  };
+
   # Host-specific packages for this laptop.
   home.packages = with pkgs; [
     nodejs # provides npm

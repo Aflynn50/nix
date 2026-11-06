@@ -1,0 +1,52 @@
+{
+  "name": "pi-cd",
+  "version": "0.1.0",
+  "description": "A pi extension that changes pi's working directory with /cd — path autocomplete, interactive browser, and recent destinations",
+  "license": "MIT",
+  "author": "Richard Anaya <richard.anaya@gmail.com>",
+  "type": "module",
+  "main": "index.ts",
+  "types": "index.ts",
+  "files": [
+    "index.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "prepublishOnly": "node --input-type=module -e \"import fs from 'node:fs'; fs.accessSync('index.ts')\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardanaya/pi-cd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/richardanaya/pi-cd/issues"
+  },
+  "homepage": "https://github.com/richardanaya/pi-cd#readme",
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.82.1",
+    "@types/node": "^26.1.1",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "pi",
+    "cli",
+    "tui",
+    "cd",
+    "cwd",
+    "directory"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
