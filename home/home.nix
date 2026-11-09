@@ -9,6 +9,7 @@
   imports = [
     ./jetbrains/jetbrains.nix # Jetbrains keymap config
     ./pi/pi.nix # pi coding agent settings + vendored extensions
+    ./agent-skills.nix # ~/.agents/skills from pinned flake inputs
   ];
 
   # This value determines the Home Manager release that your configuration is

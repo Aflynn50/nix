@@ -12,6 +12,12 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Agent skills (non-flake: just a source tree). Update with:
+    #   nix flake update mattpocock-skills
+    mattpocock-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
@@ -19,6 +25,7 @@
     nix-darwin,
     nixpkgs,
     home-manager,
+    ...
   }: let
     mkDarwinSystem = {
       username,
@@ -33,6 +40,7 @@
           {
             # Automatically append old files to be replaced with .before-home-manager
             home-manager.backupFileExtension = "before-home-manager";
+            home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.users.${username} = {...}: {
               imports = [./home/home.nix ./home/darwin.nix hostHomeModule];
             };
@@ -50,6 +58,7 @@
     }:
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/home.nix
           hostHomeModule
