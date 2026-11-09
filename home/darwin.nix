@@ -83,12 +83,4 @@
       modifierFlags = 131072;
     };
   };
-
-  # Below home.stateVersion 25.11, Home Manager *symlinks* app bundles into
-  # ~/Applications/Home Manager Apps, and macOS will not index a symlinked
-  # .app -- so Rectangle never appears in Spotlight or Launchpad. copyApps
-  # rsyncs real bundles there instead. The two options assert against each
-  # other, so linkApps has to be disabled explicitly.
-  targets.darwin.linkApps.enable = false;
-  targets.darwin.copyApps.enable = true;
 }
