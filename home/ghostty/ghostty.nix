@@ -6,7 +6,8 @@
   settings = {
     theme = "Violet Light";
     quit-after-last-window-closed = true;
-    unfocused-split-opacity = 0.5;
+    unfocused-split-opacity = 0.98;
+    unfocused-split-fill = "#ff0000";
     command = lib.getExe pkgs.fish;
     keybind = [
       "ctrl+left=esc:b"
