@@ -17,5 +17,10 @@
     map (lib.removePrefix "./")
     (lib.importJSON "${inputs.mattpocock-skills}/.claude-plugin/plugin.json").skills;
 in {
-  home.file = lib.listToAttrs (map (link inputs.mattpocock-skills) mattpocockPaths);
+  home.file =
+    lib.listToAttrs (map (link inputs.mattpocock-skills) mattpocockPaths)
+    // {
+      # Local skills live in ./skills
+      ".agents/skills/create-pr".source = ./skills/create-pr;
+    };
 }
