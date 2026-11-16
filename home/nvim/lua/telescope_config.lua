@@ -4,11 +4,15 @@ telescope.setup {
         find_files = {
             hidden = true,
             no_ignore = true
+        },
+        live_grep = {
+            additional_args = { "--hidden", "--no-ignore" }
         }
     },
     defaults = {
         file_ignore_patterns = {
             "%.git/.*",
+            "%.claude/.*",
             "node_modules/.*"
         }
     }
