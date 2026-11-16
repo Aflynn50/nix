@@ -6,7 +6,7 @@
 }: let
   # Find all IDE config folders and put the key map in each one.
   jetbrainsBase =
-    if pkgs.stdenv.isDarwin
+    if pkgs.stdenv.hostPlatform.isDarwin
     then "${config.home.homeDirectory}/Library/Application Support/JetBrains"
     else "${config.home.homeDirectory}/.config/JetBrains";
 
