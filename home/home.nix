@@ -42,6 +42,10 @@
     sd # trendy new sed replacement!
     gh # GitHub CLI (claude likes to use this)
 
+    # Rust
+    rustc
+    cargo
+
     # lsp/file formatters
     alejandra # .nix file formatter
     nixd # nix lsp

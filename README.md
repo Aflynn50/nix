@@ -18,3 +18,8 @@ Update with:
 ```
 nix flake update
 ```
+
+Run garbage collection with:
+```
+sudo nix-collect-garbage -d
+```
