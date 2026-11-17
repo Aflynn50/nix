@@ -16,4 +16,6 @@ If the work touches the UI verify it using the playwrite or chrome mcp, or, if t
 
 Once done, call the Skill tool with "code-review" to review the work.
 
+Run any handover check skills available in the repo.
+
 Commit your work to the current branch.
