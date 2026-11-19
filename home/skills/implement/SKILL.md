@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 Implement the work described by the user in the spec or tickets.
 
-If the user passes a ticket reference, fetch it from the issue tracker, assign yourself to it, and state its title before starting. If the reference is ambiguous, ask.
+If the user passes a ticket reference, fetch it from the issue tracker, assign yourself to it, and state its title before starting. If the reference is ambiguous, ask. Include a link to this ticket when summarising the changes you have made at the end.
 
 Call the Skill tool with "tdd" where possible, at pre-agreed seams.
 
