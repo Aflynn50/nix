@@ -22,6 +22,7 @@ in {
       defaultProvider = "anthropic";
       defaultModel = "claude-sonnet-5-5";
       defaultThinkingLevel = "medium";
+      warnings.anthropicExtraUsage = false;
       packages = [
         "${piRoost}"
         "npm:@samfp/pi-memory"
