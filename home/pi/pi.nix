@@ -19,8 +19,6 @@ in {
     mutableSettings = false;
     settings = {
       theme = "light";
-      defaultProvider = "anthropic";
-      defaultModel = "claude-sonnet-5-5";
       defaultThinkingLevel = "medium";
       warnings.anthropicExtraUsage = false;
       packages = [
