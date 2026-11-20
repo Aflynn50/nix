@@ -86,5 +86,6 @@ in {
       # writable for pi. pi-cd is a locally patched copy of npm:pi-cd.
       "${dir}/extensions/pi-cd".source = "${inputs.pi-extensions}/pi-cd";
       "${dir}/extensions/clear".source = "${inputs.pi-extensions}/clear";
+      "${dir}/extensions/powerline".source = "${inputs.pi-extensions}/powerline";
     };
 }
