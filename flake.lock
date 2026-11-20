@@ -77,11 +77,11 @@
     "pi-extensions": {
       "flake": false,
       "locked": {
-        "lastModified": 1795210575,
-        "narHash": "sha256-rxs4pB3Ct7sQRcV7dwXwaHZhVuXtPu3OYC2c22L2g7U=",
+        "lastModified": 1795212588,
+        "narHash": "sha256-wUNbSrZOuVxwtB88mxRr3NM3m1NoASj4DbV/ZUlG3nk=",
         "owner": "Aflynn50",
         "repo": "pi-extensions",
-        "rev": "96932ba22e60226d3fba03fe7a0b3777971309f7",
+        "rev": "61ca0d236dd5301468a453010751b258fb126eea",
         "type": "github"
       },
       "original": {
