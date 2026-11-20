@@ -3,7 +3,7 @@
   inputs,
   ...
 }:
-# Fork of pi-roost (submodule of the pi-extensions repo), built with tsc so
+# Fork of pi-roost (vendored in the pi-extensions repo), built with tsc so
 # dist/ exists. node-pty is native, hence python3 + the Darwin/Linux toolchain.
 pkgs.buildNpmPackage {
   pname = "pi-roost";

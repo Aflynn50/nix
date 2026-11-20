@@ -4,7 +4,7 @@
   inputs,
   ...
 }: let
-  # Own fork of pi-roost, built from the pi-extensions submodule.
+  # Own fork of pi-roost, vendored in the pi-extensions repo.
   piRoost = import ./pi-roost.nix {inherit pkgs inputs;};
 in {
   # pi coding agent. Settings are fully declarative: ~/.pi/agent/settings.json

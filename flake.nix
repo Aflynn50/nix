@@ -22,7 +22,7 @@
     #   nix flake update pi-extensions
     # Iterate locally: --override-input pi-extensions path:$HOME/code/pi-extensions
     pi-extensions = {
-      url = "git+https://github.com/Aflynn50/pi-extensions?submodules=1";
+      url = "github:Aflynn50/pi-extensions";
       flake = false;
     };
   };

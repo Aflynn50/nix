@@ -77,19 +77,17 @@
     "pi-extensions": {
       "flake": false,
       "locked": {
-        "lastModified": 1795175611,
-        "narHash": "sha256-IOwMq6s+pXeeMsa0lvXOWDu1tniE0A8UeLhZW74ZxxM=",
-        "ref": "refs/heads/main",
-        "rev": "790ab9632cc685a6845a93fcb69aa761156e7bc5",
-        "revCount": 5,
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/Aflynn50/pi-extensions"
+        "lastModified": 1795210575,
+        "narHash": "sha256-rxs4pB3Ct7sQRcV7dwXwaHZhVuXtPu3OYC2c22L2g7U=",
+        "owner": "Aflynn50",
+        "repo": "pi-extensions",
+        "rev": "96932ba22e60226d3fba03fe7a0b3777971309f7",
+        "type": "github"
       },
       "original": {
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/Aflynn50/pi-extensions"
+        "owner": "Aflynn50",
+        "repo": "pi-extensions",
+        "type": "github"
       }
     },
     "root": {
