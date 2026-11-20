@@ -74,12 +74,31 @@
         "type": "github"
       }
     },
+    "pi-extensions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1795173983,
+        "narHash": "sha256-oqhXnvOOFvHHRFWRCfyiUeLgklZuGNGNPpFGpImi9BI=",
+        "ref": "refs/heads/main",
+        "rev": "c1515f322265a1125fc0ba089dfbb8c68a5baa07",
+        "revCount": 2,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Aflynn50/pi-extensions"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Aflynn50/pi-extensions"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "mattpocock-skills": "mattpocock-skills",
         "nix-darwin": "nix-darwin",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "pi-extensions": "pi-extensions"
       }
     }
   },

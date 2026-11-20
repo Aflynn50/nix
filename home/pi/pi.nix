@@ -1,8 +1,12 @@
 {
   config,
   pkgs,
+  inputs,
   ...
-}: {
+}: let
+  # Own fork of pi-roost, built from the pi-extensions submodule.
+  piRoost = import ./pi-roost.nix {inherit pkgs inputs;};
+in {
   # pi coding agent. Uses the upstream home-manager module in mutable mode:
   # on each switch these settings are jq-merged into ~/.pi/agent/settings.json,
   # which stays writable so pi can still `pi install`, `pi update`, change model, etc.
@@ -22,18 +26,46 @@
     settings = {
       theme = "light";
       packages = [
-        "npm:pi-roost"
+        "${piRoost}"
         "npm:@samfp/pi-memory"
         "npm:@samfp/pi-essentials"
         "npm:pi-lsp-extension"
-        "npm:pi-knowledge-search"
         "npm:pi-session-search"
       ];
     };
   };
 
-  # Vendored, reviewed extensions (read-only store links). Only individual
-  # extension dirs are linked, so ~/.pi/agent/extensions/ stays writable for pi.
-  # pi-cd is a locally patched copy of npm:pi-cd (see header in index.ts).
-  home.file."${config.programs.pi-coding-agent.configDir}/extensions/pi-cd".source = ./extensions/pi-cd;
+  home.file = let
+    dir = config.programs.pi-coding-agent.configDir;
+    # Named agents for roost_spawn / `pi --agent` (pi-subagents markdown format).
+    # Linked per file so ~/.pi/agent/agents/ stays writable for local agents.
+    agents = builtins.listToAttrs (map (n: {
+      name = "${dir}/agents/${n}";
+      value.source = ./agents + "/${n}";
+    }) (builtins.attrNames (builtins.readDir ./agents)));
+  in
+    agents
+    // {
+      # MCP servers (pi-native, read from ~/.pi/agent/mcp.json). Read-only store
+      # link, so manage servers here rather than with `pi mcp add`.
+      # Same Playwright setup as Claude Code (~/.claude.json).
+      "${dir}/mcp.json".text = builtins.toJSON {
+        mcpServers.playwright = {
+          command = "npx";
+          args = [
+            "@playwright/mcp@latest"
+            "--browser"
+            "chrome"
+            "--output-dir"
+            "${config.home.homeDirectory}/.cache/playwright-mcp"
+          ];
+        };
+      };
+
+      # Own extensions from the pi-extensions repo (read-only store links). Only
+      # individual extension dirs are linked, so ~/.pi/agent/extensions/ stays
+      # writable for pi. pi-cd is a locally patched copy of npm:pi-cd.
+      "${dir}/extensions/pi-cd".source = "${inputs.pi-extensions}/pi-cd";
+      "${dir}/extensions/clear".source = "${inputs.pi-extensions}/clear";
+    };
 }

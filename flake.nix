@@ -18,6 +18,13 @@
       url = "github:mattpocock/skills";
       flake = false;
     };
+    # Custom pi extensions (non-flake source tree). Update with:
+    #   nix flake update pi-extensions
+    # Iterate locally: --override-input pi-extensions path:$HOME/code/pi-extensions
+    pi-extensions = {
+      url = "git+https://github.com/Aflynn50/pi-extensions?submodules=1";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
