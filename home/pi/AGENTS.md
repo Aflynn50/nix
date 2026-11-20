@@ -10,3 +10,4 @@ Never work directly on the main branch or in the main checkout. For any task tha
 - Branch from the up-to-date default branch (main). If you are already in a worktree under `.claude/worktrees/`, keep working there.
 - Make all edits, and run all commands, from inside the worktree.
 - If `.claude/` is not git-ignored in the repo, tell me instead of committing it.
+- When finished, wait for futher instruction, do not merge to main without asking.
