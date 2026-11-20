@@ -31,6 +31,11 @@ in {
         "npm:@samfp/pi-essentials"
         "npm:pi-lsp-extension"
         "npm:pi-session-search"
+        # Pinned: third-party, reviewed at these versions. Review diffs on bump.
+        "npm:pi-web-access@0.48.0"
+        "npm:@alignfirst/pi-background@0.1.3"
+        "npm:@juicesharp/rpiv-todo@2.15.0"
+        "npm:@narumitw/pi-btw@0.63.8"
       ];
     };
   };
@@ -60,6 +65,20 @@ in {
             "${config.home.homeDirectory}/.cache/playwright-mcp"
           ];
         };
+      };
+
+      # pi-web-access: keyless Exa search, readable-only fetch, no browser cookies.
+      "${dir}/web-search.json".text = builtins.toJSON {
+        provider = "exa";
+        allowBrowserCookies = false;
+        fetchRouting.allowRemoteHostedProviders = false;
+        fetch.allowedModes = ["readable"];
+      };
+
+      # rpiv-todo config (read-only; needs /reload to change).
+      ".config/rpiv-todo/config.json".text = builtins.toJSON {
+        collapseKey = "ctrl+shift+t";
+        maxWidgetLines = 12;
       };
 
       # Own extensions from the pi-extensions repo (read-only store links). Only
