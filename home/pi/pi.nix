@@ -35,6 +35,7 @@ in {
         "npm:@juicesharp/rpiv-todo@2.15.0"
         "npm:@narumitw/pi-btw@0.63.8"
         "npm:pi-compact-ui@0.1.3"
+        "npm:@richardgill/pi-project-resources@0.1.2"
       ];
     };
   };
@@ -50,6 +51,9 @@ in {
   in
     agents
     // {
+      # User-level instructions (pi reads ~/.pi/agent/AGENTS.md every session).
+      "${dir}/AGENTS.md".source = ./AGENTS.md;
+
       # MCP servers (pi-native, read from ~/.pi/agent/mcp.json). Read-only store
       # link, so manage servers here rather than with `pi mcp add`.
       # Same Playwright setup as Claude Code (~/.claude.json).
