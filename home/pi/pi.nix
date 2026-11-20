@@ -33,6 +33,7 @@ in {
         "npm:@alignfirst/pi-background@0.1.3"
         "npm:@juicesharp/rpiv-todo@2.15.0"
         "npm:@narumitw/pi-btw@0.63.8"
+        "npm:pi-compact-ui@0.1.3"
       ];
     };
   };
