@@ -7,24 +7,21 @@
   # Own fork of pi-roost, built from the pi-extensions submodule.
   piRoost = import ./pi-roost.nix {inherit pkgs inputs;};
 in {
-  # pi coding agent. Uses the upstream home-manager module in mutable mode:
-  # on each switch these settings are jq-merged into ~/.pi/agent/settings.json,
-  # which stays writable so pi can still `pi install`, `pi update`, change model, etc.
-  #   - Declared values win on activation; everything else pi wrote is kept.
-  #   - Packages are matched by name (version/ref ignored); undeclared ones pi
-  #     installed are kept. Removing one here does NOT remove it from the file
-  #     (use `pi remove <source>` as well).
-  #   - Don't pin versions here unless you want switch to undo `pi update`.
-  #   - Quit pi before switching to avoid concurrent writes.
+  # pi coding agent. Settings are fully declarative: ~/.pi/agent/settings.json
+  # is a read-only store file, so `pi install`/`pi remove` and in-app settings
+  # changes won't persist. Add packages and defaults here instead.
   # Host-specific packages/providers are added from home/hosts/*.nix (lists concatenate).
   programs.pi-coding-agent = {
     enable = true;
     package = pkgs.pi-coding-agent;
     # npm is needed for pi to install npm: packages.
     extraPackages = [pkgs.nodejs];
-    mutableSettings = true;
+    mutableSettings = false;
     settings = {
       theme = "light";
+      defaultProvider = "anthropic";
+      defaultModel = "claude-sonnet-5-5";
+      defaultThinkingLevel = "medium";
       packages = [
         "${piRoost}"
         "npm:@samfp/pi-memory"

@@ -17,6 +17,10 @@ pkgs.buildNpmPackage {
     runHook preInstall
     mkdir -p $out
     cp -r . $out/
+    # node-pty's postinstall normally sets +x on spawn-helper; without it
+    # pty.spawn fails with "posix_spawnp failed".
+    chmod -R u+w $out/node_modules/node-pty
+    find $out/node_modules/node-pty -name spawn-helper -exec chmod +x {} +
     runHook postInstall
   '';
 }
